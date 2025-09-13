@@ -1,26 +1,265 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>
            Chumbaka 
         </title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel ="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link href="style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div class="header">
+        <!-- Header -->
+
+        <header>
+            <img src="media/logo.gif" class="logo">
             <nav>
-                <img src="media/logo.gif" class="logo">
-                <ul class="nav-links">
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Courses</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Contact Us</a></li>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact Us</a></li>
                 </ul>
             </nav>
+        </header>
 
-            <div class="content">
-                <h1>Inspire kids to learn tech</h1>
-                <button type="Read More"> Read More</button>
+        <!-- Hero Section with Video -->
+         <section class="hero">
+            <div class="video-container">
+                <video autoplay muted loop playsinline>
+                     <source src="media/video.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <h1>Learn Coding the Fun Way</h1>
+                <p>Join thousands of students who are learning to code with our interactive and engaging platform.</p>
+                <button class="cta-button">Learn More</button>
+            </div>
+         </section>
+
+    <!-- Courses Section -->
+    <section class="courses">
+        <div class="section-header">
+            <h2 class="section-title">Our Courses</h2>
+            <p class="section-subtitle">Designed to equip students with the skills needed for the future through innovative, hands-on learning experiences.</p>
+        </div>
+        
+        <div class="course-cards">
+            <div class="course-card">
+                <div class="course-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Web Development</h3>
+                    <p class="course-desc">Learn to build responsive, modern websites and web applications using the latest technologies.</p>
+                    <ul class="course-features">
+                        <li><i class="fas fa-check"></i> HTML5, CSS3, JavaScript</li>
+                        <li><i class="fas fa-check"></i> React.js and Node.js</li>
+                        <li><i class="fas fa-check"></i> Database integration</li>
+                        <li><i class="fas fa-check"></i> Deployment strategies</li>
+                    </ul>
+                    <a href="#" class="course-button">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="course-card">
+                <div class="course-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Game Development</h3>
+                    <p class="course-desc">Create engaging games while learning programming fundamentals and design principles.</p>
+                    <ul class="course-features">
+                        <li><i class="fas fa-check"></i> Unity game engine</li>
+                        <li><i class="fas fa-check"></i> C# programming</li>
+                        <li><i class="fas fa-check"></i> Game mechanics design</li>
+                        <li><i class="fas fa-check"></i> Character development</li>
+                    </ul>
+                    <a href="#" class="course-button">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="course-card">
+                <div class="course-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Mobile App Development</h3>
+                    <p class="course-desc">Build cross-platform mobile applications for iOS and Android using modern frameworks.</p>
+                    <ul class="course-features">
+                        <li><i class="fas fa-check"></i> React Native</li>
+                        <li><i class="fas fa-check"></i> UI/UX design principles</li>
+                        <li><i class="fas fa-check"></i> API integration</li>
+                        <li><i class="fas fa-check"></i> App store deployment</li>
+                    </ul>
+                    <a href="#" class="course-button">Learn More</a>
+                </div>
             </div>
         </div>
+    </section>
+
+         <!-- About Us Section with Slideshow-->
+          <section class="about-us">
+            <div class="slideshow-container">
+                <div class="slide active">
+                <img src="media/photo2.png" alt="Coding Workshop" class="slide-image">
+                <div class="slide-content">
+                    <h3 class="slide-title">interactive Coding Workshop</h3>
+                    <p class="slide-desc">Student collaborating in our hands-on coding sessions</p>
+                </div>
+            </div>
+
+                <div class="slide">
+                    <img src="media/photo1.png" alt="Student Projects" class="slide-image">
+                    <div class="slide-content">
+                        <h3 class="slide-title">Project Showcase</h3>
+                        <p class="slide-desc">Students presenting their innovative coding projects</p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <img src="media/photo3.png" alt="Student Projects" class="slide-image">
+                    <div class="slide-content">
+                        <h3 class="slide-title">One-on-One Mentorship</h3>
+                        <p class="slide-desc">Personalized guidance from experienced instructors</p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <img src="media/photo4.png" alt="Student Projects" class="slide-image">
+                    <div class="slide-content">
+                        <h3 class="slide-title">Annual Hackathon</h3>
+                        <p class="slide-desc">Students competing in our yearly coding competition</p>
+                    </div>
+                </div>
+
+                <div class="slide-controls">
+                    <div class="slide-nav">
+                        <div class="nav-button prev-button">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="nav-button next-button">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+
+                <div class="slide indicators">
+                    <div class="indicator active" data-index="0"></div>
+                    <div class="indicator" data-index="1"></div>
+                    <div class="indicator" data-index="2"></div>
+                    <div class="indicator" data-index="3"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-content">
+            <h2 class="section-title">About Chumbaka</h2>
+            <p class="section-subtitle">Empowering the next generation of creators through technology education</p>
+            
+            <p class="about-desc">
+                Chumbaka is a leading coding education platform that makes learning technology skills accessible, 
+                engaging, and fun for students of all ages. Since our founding in 2015, we've helped over 10,000 
+                students discover their passion for coding and technology.
+            </p>
+            
+            <ul class="about-features">
+                <li>
+                    <i class="fas fa-check-circle"></i>
+                    <span>Hands-on, project-based learning approach</span>
+                </li>
+                <li>
+                    <i class="fas fa-check-circle"></i>
+                    <span>Expert instructors with industry experience</span>
+                </li>
+                <li>
+                    <i class="fas fa-check-circle"></i>
+                    <span>Small class sizes for personalized attention</span>
+                </li>
+                <li>
+                    <i class="fas fa-check-circle"></i>
+                    <span>Curriculum aligned with current tech industry needs</span>
+                </li>
+            </ul>
+            
+            <button class="cta-button">Learn More About Us</button>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2 class="section-title">What Our Students Say</h2>
+        <p class="section-subtitle">Hear from our students about their learning experience with Chumbaka Online.</p>
+        
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Chumbaka made coding so fun and easy to understand. I built my first game after just 2 weeks!"</p>
+                <p class="testimonial-author">- Alex, 14 years old</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">"The instructors are amazing and always there to help. I've learned so much in such a short time."</p>
+                <p class="testimonial-author">- Priya, 16 years old</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">"I never thought I could code, but Chumbaka's approach made it accessible and enjoyable."</p>
+                <p class="testimonial-author">- Michael, 15 years old</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Chumbaka</h3>
+                <p>Making coding education accessible and fun for the next generation of creators.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Courses</h3>
+                <ul>
+                    <li><a href="#">Python for Beginners</a></li>
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Game Development</a></li>
+                    <li><a href="#">Mobile Apps</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> info@chumbaka.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (234) 567-8900</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Digital City</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Chumbaka Online. All rights reserved.</p>
+        </div>
+    </footer>
+          </section>
+        <script src="script.js"></script>
     </body>
 </html>
