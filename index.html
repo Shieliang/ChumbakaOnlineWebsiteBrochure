@@ -211,6 +211,30 @@
         </div>
     </section>
 
+    <!-- Floating Email Button -->
+    <div class="email-button" id="emailButton">
+        <i class="fas fa-envelope"></i>
+    </div>
+
+    <!-- Popup Email Window -->
+    <div class="email-popup" id="emailPopup">
+        <div class="popup-header">
+            <h3>Send us a message</h3>
+            <span class="close-popup" id="closePopup">&times;</span>
+        </div>
+        <div class="popup-body">
+            <form>
+                <label for="email">Your Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" rows="4" placeholder="Write your message..." required></textarea>
+
+                <button type="submit" class="send-button">Send</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">

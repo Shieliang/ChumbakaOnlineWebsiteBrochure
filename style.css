@@ -526,3 +526,97 @@ nav ul {
         height: 300px;
     }
 }
+
+/* Floating button */
+.email-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;              /* equal width */
+    height: 60px;             /* equal height */
+    background: #ff6600;
+    color: #fff;
+    font-size: 24px;
+    display: flex;            /* center the icon */
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;       /* makes it circle */
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: background 0.3s;
+}
+
+.email-button:hover {
+    background: #e65c00;
+}
+
+/* Popup window */
+.email-popup {
+    display: none; /* hidden by default */
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
+    z-index: 1001;
+    overflow: hidden;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ff6600;
+    color: #fff;
+    padding: 10px 15px;
+}
+
+.popup-body {
+    padding: 15px;
+}
+
+.popup-body label {
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    margin: 8px 0 4px;
+}
+
+.popup-body input,
+.popup-body textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.send-button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #ff6600;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.send-button:hover {
+    background: #e65c00;
+}
+
+.close-popup {
+    cursor: pointer;
+    font-size: 20px;
+}
