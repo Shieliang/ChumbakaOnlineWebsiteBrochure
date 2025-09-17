@@ -95,3 +95,19 @@
                 observer.observe(card);
             });
         });
+
+const emailButton = document.getElementById("emailButton");
+const emailPopup = document.getElementById("emailPopup");
+const closePopup = document.getElementById("closePopup");
+
+let popupOpen = false;
+
+emailButton.addEventListener("click", () => {
+    popupOpen = !popupOpen;
+    emailPopup.style.display = popupOpen ? "block" : "none";
+});
+
+closePopup.addEventListener("click", () => {
+    emailPopup.style.display = "none";
+    popupOpen = false;
+});
