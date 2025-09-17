@@ -318,6 +318,36 @@ nav a:hover {
     color: white;
     padding: 20px;
 }
+
+.slide-nav .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;          /* fixed width */
+    height: 45px;         /* fixed height → makes it a square */
+    border-radius: 50%;   /* turns square into a circle */
+    background: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 20px;
+    display: flex;        /* centers icon */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s ease;
+}
+
+.slide-nav .nav-button:hover {
+    background: rgba(0,0,0,0.8);
+}
+
+.slide-nav .prev-button {
+    left: 15px; /* distance from left edge */
+}
+
+.slide-nav .next-button {
+    right: 15px; /* distance from right edge */
+}
         
 .slide-title {
     font-size: 1.5rem;
