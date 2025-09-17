@@ -22,15 +22,20 @@
             
         // Next slide function
         function nextSlide() {
-            let nextIndex = (currentSlide + 1) % slides.length;
-            showSlide(nextIndex);
+            if (currentSlide < slides.length - 1) {
+                showSlide(currentSlide + 1);
+            } else {
+                showSlide(0); // stay on last slide
+            }
             resetAutoAdvance();
         }
-            
-        // Previous slide function
+
         function prevSlide() {
-            let prevIndex = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(prevIndex);
+            if (currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            } else {
+                showSlide(slide.length); // stay on first slide
+            }
             resetAutoAdvance();
         }
             
