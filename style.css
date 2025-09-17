@@ -534,7 +534,7 @@ nav ul {
     right: 20px;
     width: 60px;              /* equal width */
     height: 60px;             /* equal height */
-    background: #ff6600;
+    background: #EE422E;
     color: #fff;
     font-size: 24px;
     display: flex;            /* center the icon */
@@ -575,7 +575,7 @@ nav ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #ff6600;
+    background: #EE422E;
     color: #fff;
     padding: 10px 15px;
 }
@@ -605,7 +605,7 @@ nav ul {
     width: 100%;
     padding: 10px;
     border: none;
-    background: #ff6600;
+    background: #EE422E;
     color: white;
     border-radius: 6px;
     cursor: pointer;
@@ -613,7 +613,7 @@ nav ul {
 }
 
 .send-button:hover {
-    background: #e65c00;
+    background: #EE422E;
 }
 
 .close-popup {
