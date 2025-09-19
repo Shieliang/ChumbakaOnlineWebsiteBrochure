@@ -116,3 +116,70 @@ closePopup.addEventListener("click", () => {
     emailPopup.style.display = "none";
     popupOpen = false;
 });
+
+// For carousel course cards
+document.addEventListener("DOMContentLoaded", () => {
+  const carousel = document.querySelector(".carousel");
+  const cards = document.querySelectorAll(".course-card");
+  const prevBtn = document.querySelector(".carousel-btn.prev");
+  const nextBtn = document.querySelector(".carousel-btn.next");
+
+  let currentIndex = 0; // start with first card as center
+
+  function setActiveCard(index) {
+    // Clamp index so it doesn’t go out of range
+    if (index < 0) index = 0;
+    if (index >= cards.length) index = cards.length - 1;
+    currentIndex = index;
+
+    // Remove active from all cards
+    cards.forEach(card => card.classList.remove("active"));
+
+    // Add active to current card
+    const activeCard = cards[currentIndex];
+    activeCard.classList.add("active");
+
+    // Center the active card in the carousel
+    const carouselCenter = carousel.offsetWidth / 2;
+    const cardCenter = activeCard.offsetLeft + activeCard.offsetWidth / 2;
+    const scrollLeft = cardCenter - carouselCenter;
+
+    carousel.scrollTo({
+      left: scrollLeft,
+      behavior: "smooth"
+    });
+  }
+
+    // Buttons
+    prevBtn.addEventListener("click", () => setActiveCard(currentIndex - 1));
+    nextBtn.addEventListener("click", () => setActiveCard(currentIndex + 1));
+
+    // Initial
+    setActiveCard(0);
+
+// Expand when Learn More clicked
+cards.forEach(card => {
+  const learnBtn = card.querySelector(".learn-more");
+  const closeBtn = card.querySelector(".close-card");
+
+  if (learnBtn) {
+    learnBtn.addEventListener("click", () => {
+      // Collapse all cards first
+      cards.forEach(c => c.classList.remove("expanded"));
+
+      // Expand this one only if active
+      if (card.classList.contains("active")) {
+        card.classList.add("expanded");
+      }
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      card.classList.remove("expanded");
+    });
+  }
+});
+});
+
+
