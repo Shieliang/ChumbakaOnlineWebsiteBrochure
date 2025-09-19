@@ -116,3 +116,23 @@ closePopup.addEventListener("click", () => {
     emailPopup.style.display = "none";
     popupOpen = false;
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleButtons = document.querySelectorAll(".toggle-details");
+  const videoOverlay = document.getElementById("videoOverlay");
+  const closeVideo = document.getElementById("closeVideo");
+
+  toggleButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      // Find the nearest .course-content, then its .course-details
+      const courseContent = btn.closest(".course-content");
+      const details = courseContent.querySelector(".course-details");
+
+      // Toggle open/close
+      const isOpen = details.classList.toggle("open");
+      btn.textContent = isOpen ? "Hide Details" : "View Details";
+    });
+  });
+});
+
+
