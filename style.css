@@ -664,82 +664,104 @@ nav ul {
   position: relative;
 }
 
+/* Carousel wrapper */
 .carousel-wrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
   position: relative;
+  margin: 40px auto;
+  max-width: 1200px;
 }
 
+/* Carousel track */
 .carousel {
   display: flex;
+  flex-direction: row;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   gap: 20px;
   padding: 20px;
-  scrollbar-width: none; /* hide scrollbar Firefox */
+  scrollbar-width: none;
 }
-.carousel::-webkit-scrollbar {
-  display: none; /* hide scrollbar Chrome */
-}
+.carousel::-webkit-scrollbar { display: none; }
 
-/* Base cards */
+/* Course card */
 .course-card {
   flex: 0 0 300px;
   background: #f9f9f9;
   border-radius: 12px;
-  padding: 25px;
+  padding: 20px;
   scroll-snap-align: center;
-  transition: all 0.6s ease;
-  text-align: center;
+  transition: all 0.5s ease;
   position: relative;
+  text-align: center;
 }
 
 .course-card.active {
-  flex: 0 0 400px;
   background: #fff;
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-  z-index: 5;
+  flex: 0 0 350px;
 }
 
-.course-card .learn-more {
-  display: none;
-  margin-top: 20px;
-  padding: 10px 25px;
-  border: none;
-  background: #EE422E;
-  color: #fff;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.course-card.active .learn-more {
-  display: inline-block;
-}
-
-/* Expanded state */
 .course-card.expanded {
-  flex: 0 0 1000px; /* BIG expansion */
-  padding: 40px;
+  flex: 0 0 1000px;
+  background: #fff;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  z-index: 10;
   text-align: left;
 }
 
-.course-card .course-extra {
-  display: none;
-  margin-top: 20px;
+/* Titles */
+.course-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
 }
-
-.course-card.expanded .course-extra {
+.course-card p strong {
+  font-size: 1rem;
   display: block;
 }
+.course-card p em {
+  font-size: 0.9rem;
+  color: #666;
+}
 
-/* Two-column layout */
+/* Preview images */
+.course-previews {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px 0;
+}
+.course-previews img {
+  flex: 1;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+.course-previews img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+/* Expanded layout */
+.course-extra {
+  display: none;
+}
+.course-card.expanded .course-extra {
+  display: block;
+  margin-top: 15px;
+}
+.course-card.expanded .course-previews {
+  display: none;
+}
 .course-layout {
   display: flex;
   gap: 30px;
   align-items: flex-start;
 }
-
 .course-video {
   flex: 1;
   max-width: 45%;
@@ -747,44 +769,87 @@ nav ul {
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
-
 .course-video video {
   width: 100%;
-  height: 100%;
+  height: auto;
+  display: block;
   object-fit: cover;
 }
-
 .course-info {
   flex: 1;
-  color: #444;
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.6;
+  color: #444;
 }
 
-.course-info ul {
-  margin-bottom: 15px;
-  padding-left: 20px;
+/* Info tags */
+.info-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0 20px;
+}
+.info-tags span {
+  background: #f3f3f3;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.info-tags span:hover {
+  background: #EE422E;
+  color: #fff;
+  transform: scale(1.05);
 }
 
-.course-info li {
-  margin-bottom: 8px;
-}
-
-.course-info strong {
-  color: #EE422E;
-}
-
-.close-card {
+/* Learn more */
+.learn-more {
   margin-top: 15px;
   padding: 8px 18px;
-  border: none;
-  background: #999;
+  background: #EE422E;
   color: #fff;
-  border-radius: 5px;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
+  font-weight: 600;
 }
-.close-card:hover {
-  background: #555;
+.course-card.expanded .learn-more {
+  display: none;
 }
 
+/* Close button */
+.close-card {
+  display: none;
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  z-index: 20;
+}
+.course-card.expanded .close-card { display: block; }
+.close-card:hover { color: #EE422E; }
 
+/* Carousel buttons */
+.carousel-btn {
+  background: rgba(0,0,0,0.6);
+  border: none;
+  font-size: 2.5rem;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  transition: background 0.3s;
+}
+.carousel-btn:hover { background: rgba(0,0,0,0.8); }
