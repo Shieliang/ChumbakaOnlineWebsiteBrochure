@@ -148,62 +148,82 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevBtn = document.querySelector(".carousel-btn.prev");
   const nextBtn = document.querySelector(".carousel-btn.next");
 
-  let currentIndex = 0; // start with first card as center
+  let currentIndex = 0;
+  let autoplayInterval;
 
   function setActiveCard(index) {
-    // Clamp index so it doesn’t go out of range
-    if (index < 0) index = 0;
-    if (index >= cards.length) index = cards.length - 1;
+    if (index < 0) index = cards.length - 1;
+    if (index >= cards.length) index = 0;
     currentIndex = index;
 
-    // Remove active from all cards
     cards.forEach(card => card.classList.remove("active"));
-
-    // Add active to current card
     const activeCard = cards[currentIndex];
     activeCard.classList.add("active");
 
-    // Center the active card in the carousel
     const carouselCenter = carousel.offsetWidth / 2;
     const cardCenter = activeCard.offsetLeft + activeCard.offsetWidth / 2;
     const scrollLeft = cardCenter - carouselCenter;
 
-    carousel.scrollTo({
-      left: scrollLeft,
-      behavior: "smooth"
-    });
+    carousel.scrollTo({ left: scrollLeft, behavior: "smooth" });
   }
 
-    // Buttons
-    prevBtn.addEventListener("click", () => setActiveCard(currentIndex - 1));
-    nextBtn.addEventListener("click", () => setActiveCard(currentIndex + 1));
+  function startAutoplay() {
+    autoplayInterval = setInterval(() => {
+      setActiveCard(currentIndex + 1);
+    }, 5000); // every 5s
+  }
 
-    // Initial
-    setActiveCard(0);
+  function stopAutoplay() {
+    clearInterval(autoplayInterval);
+  }
 
-// Expand when Learn More clicked
-cards.forEach(card => {
-  const learnBtn = card.querySelector(".learn-more");
-  const closeBtn = card.querySelector(".close-card");
+  prevBtn.addEventListener("click", () => {
+    stopAutoplay();
+    setActiveCard(currentIndex - 1);
+    startAutoplay();
+  });
 
-  if (learnBtn) {
-    learnBtn.addEventListener("click", () => {
-      // Collapse all cards first
+  nextBtn.addEventListener("click", () => {
+    stopAutoplay();
+    setActiveCard(currentIndex + 1);
+    startAutoplay();
+  });
+
+  setActiveCard(0);
+  startAutoplay();
+
+  // Expand / collapse
+  cards.forEach(card => {
+    const learnBtn = card.querySelector(".learn-more");
+    const closeBtn = card.querySelector(".close-card");
+
+    if (learnBtn) {
+      learnBtn.addEventListener("click", e => {
+        e.stopPropagation();
+        cards.forEach(c => c.classList.remove("expanded"));
+        if (card.classList.contains("active")) {
+          card.classList.add("expanded");
+        }
+        stopAutoplay(); // stop while expanded
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", e => {
+        e.stopPropagation();
+        card.classList.remove("expanded");
+        startAutoplay(); // resume autoplay
+      });
+    }
+  });
+
+  // Collapse when clicking outside expanded card
+  document.addEventListener("click", e => {
+    if (!e.target.closest(".course-card")) {
       cards.forEach(c => c.classList.remove("expanded"));
-
-      // Expand this one only if active
-      if (card.classList.contains("active")) {
-        card.classList.add("expanded");
-      }
-    });
-  }
-
-  if (closeBtn) {
-    closeBtn.addEventListener("click", () => {
-      card.classList.remove("expanded");
-    });
-  }
-});
+      startAutoplay();
+    }
+  });
 });
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -224,4 +244,6 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     });
 });
+
+
 
