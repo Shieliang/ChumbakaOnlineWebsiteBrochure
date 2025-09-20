@@ -715,6 +715,7 @@ nav ul {
 .course-card h3 {
   font-size: 1.5rem;
   margin-bottom: 5px;
+  color: #EE422E;  
 }
 .course-card p strong {
   font-size: 1rem;
@@ -723,6 +724,12 @@ nav ul {
 .course-card p em {
   font-size: 0.9rem;
   color: #666;
+}
+.course-info h4 {
+  margin: 15px 0 8px;
+  font-size: 1.1rem;
+  color: #EE422E;   /* red for section titles */
+  font-weight: 600;
 }
 
 /* Preview images */

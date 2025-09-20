@@ -149,10 +149,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = document.querySelector(".carousel-btn.next");
 
   let currentIndex = 0;
+  let autoplayInterval;
 
   function setActiveCard(index) {
-    if (index < 0) index = 0;
-    if (index >= cards.length) index = cards.length - 1;
+    if (index < 0) index = cards.length - 1;
+    if (index >= cards.length) index = 0;
     currentIndex = index;
 
     cards.forEach(card => card.classList.remove("active"));
@@ -166,10 +167,30 @@ document.addEventListener("DOMContentLoaded", () => {
     carousel.scrollTo({ left: scrollLeft, behavior: "smooth" });
   }
 
-  prevBtn.addEventListener("click", () => setActiveCard(currentIndex - 1));
-  nextBtn.addEventListener("click", () => setActiveCard(currentIndex + 1));
+  function startAutoplay() {
+    autoplayInterval = setInterval(() => {
+      setActiveCard(currentIndex + 1);
+    }, 5000); // every 5s
+  }
+
+  function stopAutoplay() {
+    clearInterval(autoplayInterval);
+  }
+
+  prevBtn.addEventListener("click", () => {
+    stopAutoplay();
+    setActiveCard(currentIndex - 1);
+    startAutoplay();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    stopAutoplay();
+    setActiveCard(currentIndex + 1);
+    startAutoplay();
+  });
 
   setActiveCard(0);
+  startAutoplay();
 
   // Expand / collapse
   cards.forEach(card => {
@@ -183,6 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (card.classList.contains("active")) {
           card.classList.add("expanded");
         }
+        stopAutoplay(); // stop while expanded
       });
     }
 
@@ -190,17 +212,20 @@ document.addEventListener("DOMContentLoaded", () => {
       closeBtn.addEventListener("click", e => {
         e.stopPropagation();
         card.classList.remove("expanded");
+        startAutoplay(); // resume autoplay
       });
     }
   });
 
-  // Collapse when clicking outside
+  // Collapse when clicking outside expanded card
   document.addEventListener("click", e => {
     if (!e.target.closest(".course-card")) {
       cards.forEach(c => c.classList.remove("expanded"));
+      startAutoplay();
     }
   });
 });
+
 
 
 
