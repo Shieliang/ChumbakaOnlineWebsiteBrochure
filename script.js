@@ -206,4 +206,22 @@ cards.forEach(card => {
 });
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    const contactForm = document.getElementById("contactForm");
+
+    contactForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        popupOpen = false
+
+        emailjs.sendForm("service_vnu755m", "template_ebl27oe", this)
+            .then(() => {
+                alert("Message sent successfully! 🎉");
+                contactForm.reset();
+                document.getElementById("emailPopup").style.display = "none"; // close popup
+            }, (error) => {
+                console.error("EmailJS Error:", error);
+                alert("Oops! Something went wrong, please try again.");
+            });
+    });
+});
 
