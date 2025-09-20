@@ -117,6 +117,30 @@ closePopup.addEventListener("click", () => {
     popupOpen = false;
 });
 
+// Header "Contact Us" link triggers popup
+document.addEventListener("DOMContentLoaded", () => {
+  const contactLink = document.getElementById("contactLink");
+  if (contactLink) {
+    contactLink.addEventListener("click", (e) => {
+      e.preventDefault(); // prevent jump
+      popupOpen = true;
+      emailPopup.style.display = "block";
+    });
+  }
+});
+
+// footer "Contact Us" link triggers popup
+document.addEventListener("DOMContentLoaded", () => {
+  const contactLink = document.getElementById("contactlink");
+  if (contactLink) {
+    contactLink.addEventListener("click", (e) => {
+      e.preventDefault(); // prevent jump
+      popupOpen = true;
+      emailPopup.style.display = "block";
+    });
+  }
+});
+
 // For carousel course cards
 document.addEventListener("DOMContentLoaded", () => {
   const carousel = document.querySelector(".carousel");
