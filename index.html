@@ -40,60 +40,224 @@
          </section>
 
     <!-- Courses Section -->
-    <section class="courses">
-        <div class="section-header">
-            <h2 class="section-title">Our Courses</h2>
-            <p class="section-subtitle">Designed to equip students with the skills needed for the future through innovative, hands-on learning experiences.</p>
-        </div> 
-<div class="course-cards"> 
+     <section class="courses-carousel">
+  <h2 class="section-title">COURSES</h2>
+  <p class="section-subtitle">Designed to equip students with the skills needed for the future through innovative, hands-on learning experiences</p>
 
-  <!-- Level 1 -->
-   <div class="course-card">
-    <div class="course-icon">
-      <i class="fas fa-paint-brush"></i>
-    </div>
-    <div class="course-content">
-      <h3 class="course-title">Level 1: Digital Animation, Mobile Coding</h3>
-      <p class="course-desc">Paper (Develop Creative Expression)<br>Suitable for Lower Primary</p>
-      <button class="course-button toggle-details">View Details</button>
-      <div class="course-details">
-        <ul>
-          <li>2D & 3D design</li>
-          <li>Animation</li>
-          <li>Graphical programming</li>
-          <li>Arts & Crafts</li>
-        </ul>
-        <p><strong>Class Structure & Fee:</strong><br>
-        1-hour/week (RM138/month)<br>
-        2-hour/week (RM228/month) or more options<br>
-        ** One-month deposit required for new students</p>
-      </div>
-    </div>
+  <div class="carousel-wrapper">
+    <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+    <div class="carousel">
+
+<!-- Level 1 -->
+<div class="course-card">
+  <h3>Level 1:</h3>
+  <p><strong> Digital Animation<br>
+     Mobile Coding<br></strong>
+     <em>Suitable for Lower Primary</em></p>
+
+  <!-- Previews (before expand) -->
+  <div class="course-previews">
+    <img src="media/level1a.gif" alt="Digital Animation">
+    <img src="media/level1b.jpg" alt="Mobile Coding">
   </div>
 
-  <!-- Level 2 -->
-  <div class="course-card">
-    <div class="course-icon">
-      <i class="fas fa-robot"></i>
-    </div>
-    <div class="course-content">
-      <h3 class="course-title">Level 2: Creative Computing, Physical Computing, Coding and Algorithm</h3>
-      <p class="course-desc">Playground (Develop interest in learning)<br>Suitable for Upper Primary & Lower Secondary</p>
-      <button class="course-button toggle-details">View Details</button>
-      <div class="course-details">
-        <ul>
-          <li>Graphical programming</li>
-          <li>Syntax programming</li>
-          <li>Python programming</li>
-          <li>Microcontroller, Sensors & actuators</li>
-          <li>Circuit theory, Game mechanics</li>
-        </ul>
-        <p><strong>Class Structure & Fee:</strong><br>
-        1-hour/week (RM138/month)<br>
-        2-hour/week (RM228/month) or more options<br>
-        * Arduino Starter Kit @ RM208 required<br>
-        ** One-month deposit required for new students</p>
+  <!-- Extra details (after expand) -->
+  <div class="course-extra">
+    <div class="course-layout">
+      <!-- Video left -->
+      <div class="course-video">
+        <video autoplay muted loop playsinline>
+          <source src="media/level1.mp4" type="video/mp4">
+        </video>
       </div>
+
+      <!-- Info right -->
+      <div class="course-info">
+        <h4>What you’ll learn:</h4>
+        <div class="info-tags">
+          <span>2D & 3D Design</span>
+          <span>Animation</span>
+          <span>Graphical Programming</span>
+          <span>Arts & Crafts</span>
+        </div>
+
+        <h4>Class Structure & Fee</h4>
+        <p>
+          1-hour/week (RM138/month)<br>
+          2-hour/week (RM228/month) or more options<br>
+          <em>** One-month deposit required</em>
+        </p>
+      </div>
+    </div>
+
+    <button class="close-card">×</button>
+  </div>
+
+  <button class="learn-more">Learn More</button>
+</div>
+
+<!-- Level 2 -->
+<div class="course-card">
+  <h3>Level 2:</h3>
+  <p><strong> Creative Computing<br>
+     Physical Computing<br>
+    Coding and Algorithm<br></strong>
+     <em>Suitable for Upper Primary & Lower Secondary</em></p>
+
+  <!-- Previews (before expand) -->
+  <div class="course-previews">
+    <img src="media/level2a.jpg" alt="Creative Computing">
+    <img src="media/level2b.gif" alt="Physical Computing">
+    <img src="media/level2c.gif" alt="Coding and Algorithm">
+  </div>
+
+  <!-- Extra details (after expand) -->
+  <div class="course-extra">
+    <div class="course-layout">
+      <!-- Video left -->
+      <div class="course-video">
+        <video autoplay muted loop playsinline>
+          <source src="media/level2.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Info right -->
+      <div class="course-info">
+        <h4>What you’ll learn:</h4>
+        <div class="info-tags">
+          <span>Graphical Programming</span>
+          <span>Syntax Programming</span>
+          <span>Python Programming</span>
+          <span>Microcontroller</span>
+          <span>Sensors & Actuators</span>
+          <span>Circuit Theory</span>
+          <span>Game Mechanics</span>
+        </div>
+
+        <h4>Class Structure & Fee</h4>
+        <p>
+          1-hour/week (RM138/month)<br>
+          2-hour/week (RM228/month) or more options<br>
+          <em>* Arduino Starter Kit @ RM208 required for "Physical Computing" course</em><br>
+          <em>** One-month deposit required for new students</em>
+        </p>
+      </div>
+    </div>
+
+    <button class="close-card">×</button>
+  </div>
+
+  <button class="learn-more">Learn More</button>
+</div>
+
+<!-- Level 3 -->
+<div class="course-card">
+  <h3>Level 3:</h3>
+  <p><strong> Game Development<br>
+     HCI and Machine Learning<br>
+    AI with Python<br></strong>
+     <em>Suitable for Lower & Upper Secondary</em></p>
+
+  <!-- Previews (before expand) -->
+  <div class="course-previews">
+    <img src="media/level3a.gif" alt="Creative Computing">
+    <img src="media/level3b.gif" alt="Physical Computing">
+    <img src="media/level3c.jpg" alt="Coding and Algorithm">
+  </div>
+
+  <!-- Extra details (after expand) -->
+  <div class="course-extra">
+    <div class="course-layout">
+      <!-- Video left -->
+      <div class="course-video">
+        <video autoplay muted loop playsinline>
+          <source src="media/level3.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Info right -->
+      <div class="course-info">
+        <h4>What you’ll learn:</h4>
+        <div class="info-tags">
+          <span>Human Computer Interaction</span>
+          <span>Machine Learning</span>
+          <span>Data Classification</span>
+          <span>Data Analytics</span>
+          <span>Data Science</span>
+          <span>Graphical Programming</span>
+          <span>Syntax Programming</span>
+          <span>Application Programming Interface (API) Integration</span>
+        </div>
+
+        <h4>Class Structure & Fee</h4>
+        <p>
+          1-hour/week (RM158/month)<br>
+          2-hour/week (RM268/month) or more options<br>
+          <em>* Arduino Starter Kit @ RM208 required for "HCI and Machine Learning" course</em><br>
+          <em>** One-month deposit required for new students</em>
+        </p>
+      </div>
+    </div>
+
+    <button class="close-card">×</button>
+  </div>
+
+  <button class="learn-more">Learn More</button>
+</div>
+
+<!-- Level 4 -->
+<div class="course-card">
+  <h3>Level 4:</h3>
+  <p><strong> Mobile Apps Development<br>
+    Embedded System with IoT<br>
+    Maker Club<br></strong>
+     <em>Suitable for Upper Secondary</em></p>
+
+  <!-- Previews (before expand) -->
+  <div class="course-previews">
+    <img src="media/level4a.gif" alt="Mobile Apps Development">
+    <img src="media/level4b.gif" alt="Embedded Systems with IoT">
+    <img src="media/level4c.jpg" alt="Maker Club">
+  </div>
+
+  <!-- Extra details (after expand) -->
+  <div class="course-extra">
+    <div class="course-layout">
+      <!-- Video left -->
+      <div class="course-video">
+        <video autoplay muted loop playsinline>
+          <source src="media/level4.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Info right -->
+      <div class="course-info">
+        <h4>What you’ll learn:</h4>
+        <div class="info-tags">
+          <span>Internet of Things</span>
+          <span>Artificial Intelligence</span>
+          <span>Mobile Apps Programming</span>
+          <span>Microcontroller</span>
+          <span>Local and Cloud Database</span>
+          <span>API services</span>
+        </div>
+
+        <h4>Class Structure & Fee</h4>
+        <p>
+          1-hour/week (RM158/month)<br>
+          2-hour/week (RM268/month) or more options<br>
+          <em>* Add-on kit @ RM128 required for "Embedded System with IoT" course</em><br>
+          <em>** One-month deposit required for new students</em>
+        </p>
+      </div>
+    </div>
+
+    <button class="close-card">×</button>
+  </div>
+
+  <button class="learn-more">Learn More</button>
+</div>
+
     </div>
   </div>
 

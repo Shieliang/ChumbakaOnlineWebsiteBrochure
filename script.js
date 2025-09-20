@@ -132,7 +132,43 @@ document.addEventListener("DOMContentLoaded", () => {
       const isOpen = details.classList.toggle("open");
       btn.textContent = isOpen ? "Hide Details" : "View Details";
     });
+
   });
+
+    // Buttons
+    prevBtn.addEventListener("click", () => setActiveCard(currentIndex - 1));
+    nextBtn.addEventListener("click", () => setActiveCard(currentIndex + 1));
+
+    // Initial
+    setActiveCard(0);
+
+// Expand when Learn More clicked
+cards.forEach(card => {
+  const learnBtn = card.querySelector(".learn-more");
+  const closeBtn = card.querySelector(".close-card");
+
+  if (learnBtn) {
+    learnBtn.addEventListener("click", e => {
+      e.stopPropagation(); // prevent bubbling
+      cards.forEach(c => c.classList.remove("expanded")); // collapse others
+      if (card.classList.contains("active")) {
+        card.classList.add("expanded");
+      }
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", e => {
+      e.stopPropagation();
+      card.classList.remove("expanded");
+    });
+  }
 });
 
-
+// Collapse when clicking outside expanded card
+document.addEventListener("click", e => {
+  if (!e.target.closest(".course-card")) {
+    cards.forEach(c => c.classList.remove("expanded"));
+  }
+})
+});

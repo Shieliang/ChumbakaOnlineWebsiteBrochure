@@ -696,18 +696,289 @@ nav ul {
   position: relative;
 }
 
-.course-details {
-  max-width: 0;
-  opacity: 0;
-  overflow: hidden;
-  white-space: normal;
-  transition: max-width 0.6s ease, opacity 0.4s ease;
+.carousel-btn {
+  background: rgba(0,0,0,0.6);
+  border: none;
+  font-size: 2.5rem;   /* bigger icons */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  z-index: 100;
 }
 
-.course-details.open {
-  max-width: 600px; /* adjust based on your layout */
-  opacity: 1;
-  padding-left: 20px;
+.carousel-btn:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: row;        /* keep cards horizontal */
+  overflow-x: auto;           /* allow horizontal scroll */
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  padding: 20px;
+  scrollbar-width: none;      /* Firefox hide scrollbar */
+}
+.carousel::-webkit-scrollbar {
+  display: none;              /* Chrome/Safari hide scrollbar */
+}
+
+/* Card title hierarchy */
+.course-card h3 {
+  font-size: 1.5rem;  /* Big for "Level 1:" */
+  margin-bottom: 5px;
+  color: #222;
+}
+
+.course-card p strong {
+  font-size: 1rem;    /* Smaller for "Animation / Mobile Coding" */
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.course-card p em {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Preview images (before expand) */
+.course-previews {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.course-previews img {
+    flex: 1;
+    height: 120px;        /* fixed consistent height */
+    object-fit: cover;    /* crop nicely */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Expanded state: hide previews, show details */
+.course-card.expanded .course-previews {
+  display: none;
+}
+.course-card.expanded .course-extra {
+  display: block;
+}
+.course-card .course-extra {
+  display: none;
+}
+
+/* Learn More button toggling */
+.course-card .learn-more {
+  margin-top: 15px;
+  padding: 8px 18px;
+  background: #EE422E;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.course-card.expanded .learn-more {
+  display: none;  /* hide when expanded */
+}
+
+/* Close (X) button */
+.close-card {
+  display: none;
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  z-index: 20;
+}
+.course-card.expanded .close-card {
+  display: block;
+}
+.close-card:hover {
+  color: #EE422E;
+}
+
+/* Info tags with hover animation */
+.info-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0 20px;
+}
+
+.info-tags span {
+  background: #f3f3f3;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.info-tags span:hover {
+  background: #EE422E;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Video inside expanded card */
+.course-video {
+  width: 100%;
+  max-height: 250px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.course-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hide previews when expanded */
+.course-card.expanded .course-previews {
+  display: none;
+}
+
+/* Show video when expanded */
+.course-card .course-extra {
+  display: none;
+}
+.course-card.expanded .course-extra {
+  display: block;
+}
+
+.course-card {
+  flex: 0 0 300px;            /* default width */
+  border-radius: 12px;
+  padding: 20px;
+  background: #f9f9f9;
+  scroll-snap-align: center;  /* snap nicely */
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+
+.course-card.active {
+  flex: 0 0 400px;
+  background: #fff;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  z-index: 5;
+}
+
+.course-card .learn-more {
+  display: none;
+  margin-top: 20px;
+  padding: 10px 25px;
+  border: none;
+  background: #EE422E;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.course-card.active .learn-more {
+  display: inline-block;
+}
+
+/* Media always visible, fits card */
+.course-media {
+  width: 100%;
+  height: 180px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.course-media img,
+.course-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Expanded state */
+.course-card.expanded {
+  flex: 0 0 1000px;  /* grows wider, pushes neighbors */
+  background: #fff;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  z-index: 10;
+}
+
+
+/* Extra content hidden until expanded */
+.course-extra {
+  display: none;
+  margin-top: 15px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.course-card.expanded .course-extra {
+  display: block;
+}
+
+/* Learn More button */
+.learn-more {
+  margin-top: 15px;
+  padding: 8px 18px;
+  background: #EE422E;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.learn-more:hover {
+  background: #d63a26;
+}
+
+/* Close button (X at top right) */
+.close-card {
+  display: none;
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  z-index: 20;
+}
+.course-card.expanded .close-card {
+  display: block;
+}
+.close-card:hover {
+  color: #EE422E;
+}
+
+/* Expanded layout: video left, info right */
+.course-layout {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
 }
 
 .course-video {
@@ -721,11 +992,43 @@ nav ul {
 
 .course-video video {
   width: 100%;
-  height: 100%;
+  height: auto;
+  display: block;
   object-fit: cover;
 }
 
+.course-info {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #444;
+}
 
+/* Replace bullets with tag-style labels */
+.info-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0 20px;
+}
+
+.info-tags span {
+  background: #f3f3f3;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Section titles */
+.course-info h4 {
+  margin: 15px 0 8px;
+  font-size: 1.1rem;
+  color: #EE422E;
+  font-weight: 600;
+}
 
 
 
