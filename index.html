@@ -19,7 +19,7 @@
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#courses-carousel">Courses</a></li>
                     <li><a href="#about-us">About</a></li>
-                    <li><a href="#" id="contactLink">Contact Us</a></li>
+                    <li><a href="#" id="contactLink" class="contact-trigger">Book Trial</a></li>
                 </ul>
             </nav>
         </header>
@@ -35,7 +35,7 @@
             <div class="hero-content">
                 <h1>Learn Coding the Fun Way</h1>
                 <p>Join thousands of students who are learning to code with our interactive and engaging platform.</p>
-                <button class="cta-button">Learn More</button>
+                <button id="cta-button" class="contact-trigger">Book Your Free Trial</button>
             </div>
          </section>
 
@@ -45,11 +45,11 @@
   <p class="section-subtitle">Designed to equip students with the skills needed for the future through innovative, hands-on learning experiences</p>
 
   <div class="carousel-wrapper">
-    <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="carousel-btn prev"><span></span><i class="fas fa-chevron-left"></i></button>
     <div class="carousel">
       
   <!-- Level 1 -->
-      <div class="course-card">
+      <div class="course-card" data-course="1">
         <h3>Level 1:</h3>
         <p><strong>Digital Animation<br>Mobile Coding</strong><br>
           <em>Suitable for Lower Primary</em></p>
@@ -91,7 +91,7 @@
       </div>
 
       <!-- Level 2 -->
-      <div class="course-card">
+      <div class="course-card" data-course="2">
         <h3>Level 2:</h3>
         <p><strong>Creative Computing<br>Physical Computing<br>Coding and Algorithm</strong><br>
           <em>Suitable for Upper Primary & Lower Secondary</em></p>
@@ -136,7 +136,7 @@
       </div>
 
       <!-- Level 3 -->
-      <div class="course-card">
+      <div class="course-card" data-course="3">
         <h3>Level 3:</h3>
         <p><strong>Game Development<br>HCI and Machine Learning<br>AI with Python</strong><br>
         <em>Suitable for Lower & Upper Secondary</em></p>
@@ -178,7 +178,7 @@
       </div>
 
       <!-- Level 4 -->
-      <div class="course-card">
+      <div class="course-card" data-course="4">
         <h3>Level 4:</h3>
         <p><strong>Mobile Apps Development<br>Embedded Systems with IoT<br>Maker Club</strong><br>
         <em>Suitable for Upper Secondary</em></p>
@@ -222,7 +222,7 @@
       </div>
 
     </div>
-    <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+    <button class="carousel-btn next"><span></span><i class="fas fa-chevron-right"></i></button>
   </section>
 
 
@@ -372,7 +372,7 @@
                 </li>
             </ul>
             
-            <button class="cta-button">Learn More About Us</button>
+            <a href="https://www.chumbaka.asia/" target="_blank"><button class="cta-button">Learn More About Us</button></a>
         </div>
     </section>
 
@@ -448,7 +448,7 @@
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#courses-carousel">Courses</a></li>
                     <li><a href="#about-us">About Us</a></li>
-                    <li><a href="#" id="contactlink">Contact</a></li>
+                    <li><a href="#" id="contactlink" class="contact-trigger">Contact</a></li>
                 </ul>
             </div>
             

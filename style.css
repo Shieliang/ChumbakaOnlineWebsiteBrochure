@@ -48,6 +48,22 @@ nav a {
 nav a:hover {
     color: #EE422E;
 }
+
+#contactLink{
+    background: #EE422E;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#contactLink:hover {
+    background: #d63a26;
+}
+
 .cta-button {
     background: #EE422E;
     color: white;
@@ -58,8 +74,23 @@ nav a:hover {
     cursor: pointer;
     transition: background 0.3s;
 }
-        
+
 .cta-button:hover {
+    background: #d63a26;
+}
+
+#cta-button {
+    background: #EE422E;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+        
+#cta-button:hover {
     background: #d63a26;
 }
         
@@ -845,18 +876,22 @@ nav ul {
 
 /* Carousel buttons */
 .carousel-btn {
-  background: rgba(0,0,0,0.6);
   border: none;
-  font-size: 2.5rem;
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  color: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;   /* Perfectly round */
+  color: black;
+  font-size: 1.5rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 200;
   transition: background 0.3s;
+  padding: 0;           /* prevent default button padding */
+  background-color: transparent;
 }
-.carousel-btn:hover { background: rgba(0,0,0,0.8); }
+
+.carousel-btn:hover {
+  color: #EE422E; /* keep arrow black */
+}

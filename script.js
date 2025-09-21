@@ -119,26 +119,17 @@ closePopup.addEventListener("click", () => {
 
 // Header "Contact Us" link triggers popup
 document.addEventListener("DOMContentLoaded", () => {
-  const contactLink = document.getElementById("contactLink");
-  if (contactLink) {
-    contactLink.addEventListener("click", (e) => {
-      e.preventDefault(); // prevent jump
-      popupOpen = true;
-      emailPopup.style.display = "block";
-    });
-  }
-});
+  const triggers = document.querySelectorAll(".contact-trigger");
+  const emailPopup = document.getElementById("emailPopup");
+  let popupOpen = false;
 
-// footer "Contact Us" link triggers popup
-document.addEventListener("DOMContentLoaded", () => {
-  const contactLink = document.getElementById("contactlink");
-  if (contactLink) {
-    contactLink.addEventListener("click", (e) => {
+  triggers.forEach(trigger => {
+    trigger.addEventListener("click", (e) => {
       e.preventDefault(); // prevent jump
       popupOpen = true;
       emailPopup.style.display = "block";
     });
-  }
+  });
 });
 
 // For carousel course cards
@@ -149,9 +140,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = document.querySelector(".carousel-btn.next");
 
   let currentIndex = 0;
-  let autoplayInterval;
 
+  // Center a given card
   function setActiveCard(index) {
+    
     if (index < 0) index = cards.length - 1;
     if (index >= cards.length) index = 0;
     currentIndex = index;
@@ -160,37 +152,54 @@ document.addEventListener("DOMContentLoaded", () => {
     const activeCard = cards[currentIndex];
     activeCard.classList.add("active");
 
-    const carouselCenter = carousel.offsetWidth / 2;
-    const cardCenter = activeCard.offsetLeft + activeCard.offsetWidth / 2;
-    const scrollLeft = cardCenter - carouselCenter;
+    // Use getBoundingClientRect to calculate exact center
+    const carouselRect = carousel.getBoundingClientRect();
+    const cardRect = activeCard.getBoundingClientRect();
 
-    carousel.scrollTo({ left: scrollLeft, behavior: "smooth" });
+    const carouselCenter = carouselRect.width / 2;
+    const cardCenter = (cardRect.left - carouselRect.left) + (cardRect.width / 2);
+
+    const scrollLeft = carousel.scrollLeft + (cardCenter - carouselCenter);
+
+    carousel.scrollTo({ left: scrollLeft, behavior: "smooth"});
   }
 
-  function startAutoplay() {
-    autoplayInterval = setInterval(() => {
-      setActiveCard(currentIndex + 1);
-    }, 5000); // every 5s
-  }
+  // Collapse the *active* expanded card instantly (no transition)
+  function collapseActiveInstantly() {
+    const active = cards[currentIndex];
+    if (!active || !active.classList.contains("expanded")) return;
 
-  function stopAutoplay() {
-    clearInterval(autoplayInterval);
+    // Save and disable transition
+    const prevTransition = active.style.transition;
+    active.style.transition = "none";
+
+    // Collapse immediately
+    active.classList.remove("expanded");
+
+    // Force reflow so browser applies collapsed size instantly
+    void active.offsetWidth;
+
+    // Restore transition next frame (so future expands animate)
+    requestAnimationFrame(() => {
+      active.style.transition = prevTransition || "";
+    });
   }
 
   prevBtn.addEventListener("click", () => {
-    stopAutoplay();
-    setActiveCard(currentIndex - 1);
-    startAutoplay();
+    collapseActiveInstantly();    
+    requestAnimationFrame(() => {
+      setActiveCard(currentIndex - 1);
+    });
   });
 
   nextBtn.addEventListener("click", () => {
-    stopAutoplay();
-    setActiveCard(currentIndex + 1);
-    startAutoplay();
+    collapseActiveInstantly();
+    requestAnimationFrame(() => {
+      setActiveCard(currentIndex + 1);
+    });;
   });
 
   setActiveCard(0);
-  startAutoplay();
 
   // Expand / collapse
   cards.forEach(card => {
@@ -200,11 +209,19 @@ document.addEventListener("DOMContentLoaded", () => {
     if (learnBtn) {
       learnBtn.addEventListener("click", e => {
         e.stopPropagation();
-        cards.forEach(c => c.classList.remove("expanded"));
-        if (card.classList.contains("active")) {
+
+        // Toggle expanded state
+        if (card.classList.contains("expanded")) {
+          card.classList.remove("expanded");
+        } else {
+          cards.forEach(c => c.classList.remove("expanded"));
           card.classList.add("expanded");
+
+          // Always center expanded card
+            setTimeout(() => {
+            setActiveCard([...cards].indexOf(card));
+          }, 500); // matches your CSS transition duration
         }
-        stopAutoplay(); // stop while expanded
       });
     }
 
@@ -212,7 +229,6 @@ document.addEventListener("DOMContentLoaded", () => {
       closeBtn.addEventListener("click", e => {
         e.stopPropagation();
         card.classList.remove("expanded");
-        startAutoplay(); // resume autoplay
       });
     }
   });
@@ -221,10 +237,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", e => {
     if (!e.target.closest(".course-card")) {
       cards.forEach(c => c.classList.remove("expanded"));
-      startAutoplay();
     }
   });
 });
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const contactForm = document.getElementById("contactForm");
